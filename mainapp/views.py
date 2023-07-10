@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+
 from mainapp.models import (
     Teacher,School,Rewiew,Galeria, Newss
 )
@@ -6,8 +7,6 @@ from mainapp.serializer import(
     SchoolSerializer,TeacherSerializer,GaleriaSerializer,\
         RewiewSerializer, NewssSerializer ,
 )
-
-# Create your views here.
 
 
 class SchoolView(ModelViewSet):
@@ -26,9 +25,7 @@ class RewiewView(ModelViewSet):
     queryset=Rewiew.objects.all()
     serializer_class=RewiewSerializer
 
-# class NewsView(ModelViewSet):
-#     queryset=News.objects.all()
-#     serializer_class=NewsSerializer
+
 class NewssView(ModelViewSet):
     queryset = Newss.objects.all()
     serializer_class = NewssSerializer

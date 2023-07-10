@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from datetime import timedelta
 from datetime import date
-from django.contrib.auth import get_user_model
+
 User = get_user_model()
 
 class School(models.Model):
@@ -30,6 +31,7 @@ class School(models.Model):
         verbose_name='Школа'
         verbose_name_plural='Школы'
 
+
 class Teacher(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='teachers')
     position= models.CharField(max_length=120,verbose_name='Должность')
@@ -42,6 +44,7 @@ class Teacher(models.Model):
     class Meta:
         verbose_name='Учитель'
         verbose_name_plural = 'Учителя'
+        
 
 class Galeria(models.Model):
     school = models.ForeignKey(School,on_delete=models.CASCADE,related_name='galleries')
@@ -67,26 +70,12 @@ class Rewiew(models.Model):
         verbose_name_plural = verbose_name + 'ы'
 
 
-# class News(models.Model):
-#     title = models.CharField(max_length=200)
-#     body = models.TextField()
-#     last_viewed_by = models.ForeignKey(User, related_name="last_viewed_articles", on_delete=models.CASCADE)
-#     last_viewed_at = models.DateField(auto_now_add=True)
-#     today = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return self.title
-
-#     class Meta:
-#         verbose_name = 'Новость'
-#         verbose_name_plural = 'Новости'
-
 class Newss(models.Model):
     School = models.ForeignKey(to=School, on_delete=models.CASCADE, related_name='newsss')
     author = models.CharField(max_length=120, verbose_name='Автор')
     title = models.CharField(max_length=100)
     content = models.TextField()
-    created_at = models.DateField()#auto_now_add=True)
+    created_at = models.DateField()
     
     def __str__(self) -> str:
         return self.title

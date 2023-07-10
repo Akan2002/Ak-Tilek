@@ -12,6 +12,7 @@ class TeacherSerializer(serializers.ModelSerializer):
             'id','school','name','photo',
         )
 
+
 class GaleriaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Galeria
@@ -19,13 +20,6 @@ class GaleriaSerializer(serializers.ModelSerializer):
             'id','school','photo','name',
         )
 
-# class NewsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model=News
-#         fields = (
-#             'id', 'title', 'body', 'last_viewed_by', 'last_viewed_at', 
-            
-#         )
 
 class RewiewSerializer(serializers.Serializer):
     class Meta:
@@ -34,12 +28,14 @@ class RewiewSerializer(serializers.Serializer):
         'id','photo','parent','description',
         )
 
+
 class NewssSerializer(serializers.ModelSerializer):
     class Meta:
         model = Newss
         fields = (
             'title', 'content', 'created_at', 'create_date',
         )
+
 
 class SchoolSerializer(serializers.ModelSerializer):
     teachers = TeacherSerializer(many = True, read_only = True)
